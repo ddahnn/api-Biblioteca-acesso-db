@@ -25,7 +25,7 @@ def criar_usuario(db: Session, usuario:UsuarioCreate):
     db_usuario = Usuario(username=usuario.username, senha =hash_senha)
     db.add(db_usuario)
     db.commit()
-    db.refres(db_usuario)
+    db.refresh(db_usuario)
     return db_usuario
 
 

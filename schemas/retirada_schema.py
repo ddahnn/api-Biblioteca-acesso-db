@@ -1,4 +1,4 @@
-from pydantic import BaseModel, validador   # type: ignore
+from pydantic import BaseModel, validator   
 from typing import Optional
 from datetime import date, datetime
 
@@ -11,7 +11,7 @@ class RetiradaBase(BaseModel):
     data_devolucao:Optional[str] = None
     status:str
 
-    @validador("data_retirada", "data_prevista","data_devolicao", pre=True, always= True)
+    @validator("data_retirada", "data_prevista", "data_devolucao", pre=True, always=True)
     def validar_datas(cls, val):
         if val is None:
             return None
@@ -36,5 +36,5 @@ class RetiradaCreate(RetiradaBase):
 class Retirada(RetiradaBase):
     id:int
 
-    class config:
-        orm_mode = True
+    class Config:
+        from_attributes = True

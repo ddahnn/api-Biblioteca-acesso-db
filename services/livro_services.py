@@ -16,7 +16,7 @@ def criar_livro(db: Session, livro:LivroCreate):
 
 # Exibe todos os livros
 def exibir_livros(db:Session):
-    return db.query(Livro).all
+    return db.query(Livro).all()
 
 
 #busca livro por PK ISBN 
